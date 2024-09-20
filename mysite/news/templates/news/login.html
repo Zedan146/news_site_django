@@ -1,0 +1,25 @@
+<!-- Указываем какой базовый шаблон будет расширяться -->
+{% extends 'base.html' %}
+
+<!-- Блок title, который помещается в базовый шаблон -->
+{% block title %}
+Авторизация :: {{ block.super }}
+{% endblock %}
+
+<!-- Блок sidebar, который помещается в базовый шаблон, через вложенный маршрут -->
+{% block sidebar %}
+{% include 'inc/_sitebar.html' %}
+{% endblock %}
+
+<!-- Блок content, который помещается в базовый шаблон -->
+{% block content %}
+
+<h1>Авторизация</h1>
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary btn-block">Войти</button>
+</form>
+
+{% endblock %}

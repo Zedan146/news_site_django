@@ -1,0 +1,26 @@
+<!-- Указываем какой базовый шаблон будет расширяться -->
+{% extends 'base.html' %}
+
+<!-- Блок title, который помещается в базовый шаблон -->
+{% block title %}
+Обратная связь :: {{ block.super }}
+{% endblock %}
+
+<!-- Блок sidebar, который помещается в базовый шаблон, через вложенный маршрут -->
+{% block sidebar %}
+{% include 'inc/_sitebar.html' %}
+{% endblock %}
+
+<!-- Блок content, который помещается в базовый шаблон -->
+{% block content %}
+
+<h1>Обратная связь</h1>
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary btn-block">Отправить</button>
+
+</form>
+
+{% endblock %}

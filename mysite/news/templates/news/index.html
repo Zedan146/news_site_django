@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{ title }} :: {{ block.super }}
+{% endblock %}
+
+{% block sidebar %}
+{% include 'inc/_sitebar.html' %}
+{% endblock %}
+
+{% block content %}
+{{ mixin_prop }}
+{% for item in news %}
+<div class="card mb-3">
+    <div class="card-header">
+        Категория: <a href="{{ item.category.get_absolute_url }}">{{ item.category }}</a>
+    </div>
+    <div class="card-body">
+        <div class="media">
+            {% if item.photo %}
+            <img src="{{ item.photo.url }}" alt="" width="256" height="256" class="mr-3">
+            {% else %}
+            <img src="https://lipsum.app/id/24/256x256" alt="" class="mr-3">
+            {% endif %}
+            <div class="nedia-body">
+                <h5 class="card-title">{{ item.title }}</h5>
+                <p class="card-text">{{ item.content }}</p>
+                <a href="{{ item.get_absolute_url }}" class="btn btn-primary">Read more...</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="card-footer text-muted">
+        {{ item.created_at | date:"Y-m-d H:i" }}
+    </div>
+</div>
+{% endfor %}
+{% endblock %}

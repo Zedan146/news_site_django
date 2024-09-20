@@ -1,0 +1,8 @@
+#header,
+.module h2, .module caption, .inline-group h2{
+    background: #90a4ae;
+}
+
+#site-name a:link, #site-name a:visited{
+    color: #fff;
+}

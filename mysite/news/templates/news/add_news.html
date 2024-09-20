@@ -1,0 +1,71 @@
+<!-- Указываем какой базовый шаблон будет расширяться -->
+{% extends 'base.html' %}
+
+<!-- Блок title, который помещается в базовый шаблон -->
+{% block title %}
+Добавление новости :: {{ block.super }}
+{% endblock %}
+
+<!-- Блок sidebar, который помещается в базовый шаблон, через вложенный маршрут -->
+{% block sidebar %}
+{% include 'inc/_sitebar.html' %}
+{% endblock %}
+
+<!-- Блок content, который помещается в базовый шаблон -->
+{% block content %}
+
+<h1>Добавление новости</h1>
+
+<!--
+ Определяем форму, указываем метод запроса POST,
+ action указывает на адрес, на который направит после отправки формы
+-->
+<form action="{% url 'add_news' %}" method='post'>
+    <!-- Специальный тег для формы, без которого форма не будет отправляться -->
+    {% csrf_token %}
+    <!-- Рендер формы через метод формы as_p, отображает форму в виде параграфа -->
+    {{ form.as_p }}
+
+    {% comment Рендер формы через div, более гибкий вариант %}
+    {{ form.non_field.errors }}
+    <div class="form-group">
+        <!-- Указываем нужный лейбл поля -->
+        <label for="{{ form.title.id_for_label }}">Название: </label>
+        <!-- Выводим input для поля -->
+        {{ form.title }}
+        <!-- Вывод валидационных ошибок для поля -->
+        <div class="invalid-feedback">
+            {{ form.title.errors }}
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="{{ form.content.id_for_label }}">Текст: </label>
+        {{ form.content }}
+        <div class="invalid-feedback">
+            {{ form.content.errors }}
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="{{ form.is_published.id_for_label }}">Опубликовано?: </label>
+        {{ form.is_published }}
+        <div class="invalid-feedback">
+            {{ form.is_published.errors }}
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="{{ form.category.id_for_label }}">Выберите категорию: </label>
+        {{ form.category }}
+        <div class="invalid-feedback">
+            {{ form.category.errors }}
+        </div>
+    </div>
+    {% endcomment %}
+
+    <!-- Кнопка отправки формы -->
+    <button type="submit" class="btn btn-primary btn-block">Добавить новость</button>
+</form>
+
+{% endblock %}

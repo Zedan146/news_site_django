@@ -148,7 +148,7 @@ INTERNAL_IPS = [
 EMAIL_HOST = 'smtp.yandex.ru'
 EMAIL_PORT = 465    # 587
 EMAIL_HOST_USER = 'danila.zenkovitch17@yandex.ru'
-EMAIL_HOST_PASSWORD = 'xysqplcmfvckxfkw'
+EMAIL_HOST_PASSWORD = '***********'
 EMAIL_USE_TLS = False
 EMAIL_USE_SSL = True
 

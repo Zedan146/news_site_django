@@ -84,7 +84,7 @@ DATABASES = {
         # 'ENGINE': 'django.db.backends.postgresql',
         # 'NAME': 'django',
         # 'USER': 'admin',
-        # 'PASSWORD': '77712',
+        # 'PASSWORD': '123',
         # 'HOST': 'localhost',
         # 'PORT': '5432',
     }
@@ -147,7 +147,7 @@ INTERNAL_IPS = [
 # Настройка SMTP сервера
 EMAIL_HOST = 'smtp.yandex.ru'
 EMAIL_PORT = 465    # 587
-EMAIL_HOST_USER = 'danila.zenkovitch17@yandex.ru'
+EMAIL_HOST_USER = 'danilaZ@yandex.ru'
 EMAIL_HOST_PASSWORD = '***********'
 EMAIL_USE_TLS = False
 EMAIL_USE_SSL = True
